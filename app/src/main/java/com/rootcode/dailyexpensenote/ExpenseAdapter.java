@@ -3,6 +3,7 @@ package com.rootcode.dailyexpensenote;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -62,9 +63,17 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHold
 //                BottomSheetDialog sheetDialog = new BottomSheetDialog(context);
 //                sheetDialog.setContentView(detailssheet);
 //                sheetDialog.show();
+                Intent intent = new Intent(context,DetailsActivity.class);
+                intent.putExtra("type",currentExpense.getType());
+                intent.putExtra("amount",currentExpense.getAmount());
+                intent.putExtra("date",currentExpense.getDate());
+                intent.putExtra("time",currentExpense.getTime());
+                context.startActivity(intent);
 
-                DetailsExpenseSheet detailsExpenseSheet = new DetailsExpenseSheet(currentExpense.getId(), currentExpense.getDate(), currentExpense.getType(), currentExpense.getTime(), currentExpense.getAmount());
-                detailsExpenseSheet.show(((FragmentActivity) context).getSupportFragmentManager(), "Expense Details");
+               /*
+
+               DetailsExpenseSheet detailsExpenseSheet = new DetailsExpenseSheet(currentExpense.getId(), currentExpense.getDate(), currentExpense.getType(), currentExpense.getTime(), currentExpense.getAmount());
+                detailsExpenseSheet.show(((FragmentActivity) context).getSupportFragmentManager(), "Expense Details");*/
             }
         });
 
